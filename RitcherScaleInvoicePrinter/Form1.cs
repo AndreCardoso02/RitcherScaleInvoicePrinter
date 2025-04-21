@@ -74,5 +74,11 @@ namespace RitcherScaleInvoicePrinter
             SetupFileWatcher();
             LoadAllData();
         }
+
+        // Form Load
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // Inicialização adicional se necessário
+        }
     }
 }
