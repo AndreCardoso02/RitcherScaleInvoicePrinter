@@ -394,3 +394,4 @@ InteropTests/NativeTests/out
 /.vs/RitcherScaleInvoicePrinter/v17/*
 /RitcherScaleInvoicePrinter/obj/*
 /RitcherScaleInvoicePrinter/bin/*
+/RitcherScaleInvoicePrinter/obj/Debug/*
