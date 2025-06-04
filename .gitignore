@@ -385,3 +385,12 @@ InteropTests/NativeTests/out
 # 'git update-index --assume-unchanged <filename>' will allow ignoring changes for tracked files.
 # **/ScratchProject/
 # **/ScratchProjectWithInternals/
+/.vs/RitcherScaleInvoicePrinter/FileContentIndex/e55da253-fcd9-4582-8fa8-923be54d6733.vsidx
+/.vs/RitcherScaleInvoicePrinter/v17/.wsuo
+/.vs/RitcherScaleInvoicePrinter/v17/DocumentLayout.backup.json
+/.vs/RitcherScaleInvoicePrinter/v17/DocumentLayout.json
+/RitcherScaleInvoicePrinter/obj/Debug/RitcherScaleInvoicePrinter.csproj.AssemblyReference.cache
+/.vs/RitcherScaleInvoicePrinter/FileContentIndex/*
+/.vs/RitcherScaleInvoicePrinter/v17/*
+/RitcherScaleInvoicePrinter/obj/*
+/RitcherScaleInvoicePrinter/bin/*

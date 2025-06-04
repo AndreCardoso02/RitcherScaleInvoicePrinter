@@ -14,16 +14,35 @@ namespace RitcherScaleInvoicePrinter
     public partial class Form1 : Form
     {
         private FileSystemWatcher _watcher;
-        private readonly string _dataPath = @"C:\WBridge\data";
+        private string _dataPath = @"C:\WBridge\data";
 
         // Setup software
         private void SetupFileWatcher()
         {
-            _watcher = new FileSystemWatcher(_dataPath, "*.DAT");
-            _watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
-            _watcher.Changed += OnFileChanged;
-            _watcher.Created += OnFileChanged;
-            _watcher.EnableRaisingEvents = true;
+            try
+            {
+                _watcher = new FileSystemWatcher(_dataPath, "*.DAT");
+                _watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName;
+                _watcher.Changed += OnFileChanged;
+                _watcher.Created += OnFileChanged;
+                _watcher.EnableRaisingEvents = true;
+            }
+            catch (System.ArgumentException ex)
+            {
+                SelectFolderForm form = new SelectFolderForm();
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    _dataPath = form.SelectedPath;
+                    MessageBox.Show("Definições actualizadas");
+                    SetupFileWatcher();
+                } 
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
 
         // Event for when any file is added or changed
@@ -37,12 +56,20 @@ namespace RitcherScaleInvoicePrinter
         // Load All Data
         private void LoadAllData()
         {
-            dataGridView1.Rows.Clear();
-            var files = Directory.GetFiles(_dataPath, "*.DAT");
-
-            foreach (var file in files)
+            try
             {
-                LoadDataFromFile(file);
+                dataGridView1.Rows.Clear();
+                var files = Directory.GetFiles(_dataPath, "*.DAT");
+
+                foreach (var file in files)
+                {
+                    LoadDataFromFile(file);
+                }
+            }
+            catch (System.IO.DirectoryNotFoundException ex)
+            {
+                MessageBox.Show("Directório não encontrado", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Environment.Exit(0);
             }
         }
 
