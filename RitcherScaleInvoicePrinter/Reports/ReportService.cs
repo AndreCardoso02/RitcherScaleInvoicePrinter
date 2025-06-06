@@ -15,8 +15,8 @@ namespace RitcherScaleInvoicePrinter.Reports
     {
         public void PrintInvoice()
         {
-            List<Mesure> mesures = new List<Mesure>();
-            mesures.Add(new Mesure { Driver = "Andre", Mass="20.0"});
+            List<Measure> mesures = new List<Measure>();
+            //mesures.Add(new Measure { Driver = "Andre", Mass="20.0"});
 
             LocalReport invoice = new LocalReport();
             invoice.ReportPath = "Invoice.rdlc";
