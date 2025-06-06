@@ -395,3 +395,7 @@ InteropTests/NativeTests/out
 /RitcherScaleInvoicePrinter/obj/*
 /RitcherScaleInvoicePrinter/bin/*
 /RitcherScaleInvoicePrinter/obj/Debug/*
+/RitcherScaleInvoicePrinter/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+/.vs/VSWorkspaceState.json
+/.vs/*
+
