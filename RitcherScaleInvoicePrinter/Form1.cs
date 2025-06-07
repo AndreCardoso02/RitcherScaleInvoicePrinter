@@ -1,9 +1,11 @@
 ﻿using RitcherScaleInvoicePrinter.Model;
+using RitcherScaleInvoicePrinter.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,7 @@ namespace RitcherScaleInvoicePrinter
         private FileSystemWatcher _watcher;
         private string _dataPath = @"C:\WBridge\data";
         private List<Measure> travelRecords = new List<Measure>();
+        private Measure selectedItem = null;
 
         // Setup software
         private void SetupFileWatcher()
@@ -125,6 +128,10 @@ namespace RitcherScaleInvoicePrinter
                     ?.OrderByDescending(x => x.EntryDate.Date)  // Ordena pela data (sem hora)
                     ?.ThenByDescending(x => x.EntryTime)  // Depois pela hora do dia
                     ?.ToList();
+
+                if (radioHoje.Checked) {
+                    todayFilter();
+                }
             }
             catch (System.IO.DirectoryNotFoundException ex)
             {
@@ -216,6 +223,7 @@ namespace RitcherScaleInvoicePrinter
         public Form1()
         {
             InitializeComponent();
+            radioHoje.Checked = true;
             SetupFileWatcher();
             LoadAllData();
         }
@@ -232,15 +240,153 @@ namespace RitcherScaleInvoicePrinter
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    //string Id = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
-                    var data = travelRecords?.OrderByDescending(x => x.EntryDate)?.ThenByDescending(x => x.EntryTime)?.ToList()[dataGridView1.SelectedRows[0].Index];
-
-                    MessageBox.Show("Selecionado");
+                    if (e.RowIndex >= 0)
+                    {
+                        selectedItem = (Measure)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                        
+                        if (selectedItem != null)
+                        {
+                            btnImprimir.Enabled = true;
+                        }
+                    } else selectedItem = null;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Nao foi possivel selecionar, tente novamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void radioHoje_CheckedChanged(object sender, EventArgs e)
+        {
+            todayFilter();
+        }
+
+        private void todayFilter()
+        {
+            try
+            {
+                var filtro = travelRecords?.Where(x => x.EntryDate.Date == DateTime.Now.Date)?.ToList();
+                if (filtro?.Any() ?? false)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = filtro
+                        ?.OrderByDescending(x => x.EntryDate.Date)  // Ordena pela data (sem hora)
+                        ?.ThenByDescending(x => x.EntryTime)  // Depois pela hora do dia
+                        ?.ToList();
+                }
+                else dataGridView1.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tente novamente mais tarde");
+            }
+        }
+
+        private void radioMes_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var filtro = travelRecords?.Where(x => x.EntryDate.Month == DateTime.Now.Month)?.ToList();
+                if (filtro?.Any() ?? false)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = filtro
+                        ?.OrderByDescending(x => x.EntryDate.Date)  // Ordena pela data (sem hora)
+                        ?.ThenByDescending(x => x.EntryTime)  // Depois pela hora do dia
+                        ?.ToList();
+                }
+                else dataGridView1.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tente novamente mais tarde");
+            }
+        }
+
+        private void radioOutros_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioOutros.Checked)
+                panelOutros.Visible = true;
+            else panelOutros.Visible = false;
+            filtraOutros();
+        }
+
+        private void filtraOutros()
+        {
+            try
+            {
+                if (DateTime.Parse(dateDe.Text) > DateTime.Parse(dateAte.Text))
+                    MessageBox.Show("Data inicial não pode ser maior que a data de destino", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    var filtro = travelRecords?.Where(x => x.EntryDate.Date >= DateTime.Parse(dateDe.Text).Date && x.EntryDate.Date < DateTime.Parse(dateAte.Text).AddDays(1).Date)?.ToList();
+                    if (filtro?.Any() ?? false)
+                    {
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = filtro
+                            ?.OrderByDescending(x => x.EntryDate.Date)  // Ordena pela data (sem hora)
+                            ?.ThenByDescending(x => x.EntryTime)  // Depois pela hora do dia
+                            ?.ToList();
+                    }
+                    else dataGridView1.DataSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tente novamente mais tarde");
+            }
+        }
+
+        private void radioTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (travelRecords?.Any() ?? false)
+                {
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = travelRecords
+                        ?.OrderByDescending(x => x.EntryDate.Date)  // Ordena pela data (sem hora)
+                        ?.ThenByDescending(x => x.EntryTime)  // Depois pela hora do dia
+                        ?.ToList();
+                }
+                else dataGridView1.DataSource = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Tente novamente mais tarde");
+            }
+        }
+
+        private void dateDe_ValueChanged(object sender, EventArgs e)
+        {
+            filtraOutros();
+        }
+
+        private void dateAte_ValueChanged(object sender, EventArgs e)
+        {
+            filtraOutros();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (selectedItem != null)
+                {
+                    ReportService reportService = new ReportService();
+                    reportService.PrintInvoice(selectedItem);
+                }
+                else MessageBox.Show("Selecione algum item na tabela para poder imprimir", "Impressão", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

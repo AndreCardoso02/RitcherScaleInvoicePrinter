@@ -21,7 +21,7 @@ namespace RitcherScaleInvoicePrinter.Reports
             };
 
             LocalReport invoice = new LocalReport();
-            invoice.ReportPath = "Invoice.rdlc";
+            invoice.ReportPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports", "Invoice.rdlc");
 
             invoice.DataSources.Clear();
             invoice.DataSources.Add(new ReportDataSource("DataSet1", mesures));

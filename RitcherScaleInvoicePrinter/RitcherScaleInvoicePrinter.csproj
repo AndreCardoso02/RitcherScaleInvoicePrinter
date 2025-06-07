@@ -101,7 +101,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\Invoice.rdlc" />
+    <EmbeddedResource Include="Reports\Invoice.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelectFolderForm.resx">
       <DependentUpon>SelectFolderForm.cs</DependentUpon>
     </EmbeddedResource>
