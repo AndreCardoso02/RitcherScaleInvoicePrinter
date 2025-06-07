@@ -379,8 +379,10 @@ namespace RitcherScaleInvoicePrinter
             {
                 if (selectedItem != null)
                 {
-                    ReportService reportService = new ReportService();
-                    reportService.PrintInvoice(selectedItem);
+                    //ReportService reportService = new ReportService();
+                    //reportService.PrintInvoice(selectedItem);
+                    ReportPreview preview = new ReportPreview(selectedItem);
+                    preview.ShowDialog();
                 }
                 else MessageBox.Show("Selecione algum item na tabela para poder imprimir", "Impressão", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }

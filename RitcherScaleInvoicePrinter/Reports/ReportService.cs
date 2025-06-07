@@ -1,4 +1,4 @@
-﻿using Microsoft.Reporting.WebForms;
+﻿using Microsoft.Reporting.WinForms;
 using RitcherScaleInvoicePrinter.Model;
 using System;
 using System.Collections.Generic;
