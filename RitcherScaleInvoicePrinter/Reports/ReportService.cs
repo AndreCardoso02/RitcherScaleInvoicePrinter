@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace RitcherScaleInvoicePrinter.Reports
 {
@@ -63,17 +64,79 @@ namespace RitcherScaleInvoicePrinter.Reports
 
         private void Print(IList<Stream> pages)
         {
-            PrintDocument printDoc = new PrintDocument();
-            printDoc.PrintPage += (sender, e) =>
+            try
+            {
+                PrintDocument printDoc = new PrintDocument();
+                printDoc.PrintPage += (sender, e) =>
+                {
+                    Metafile pageImage = new Metafile(pages[0]);
+
+                    e.Graphics.DrawImage(pageImage, e.PageBounds);
+                    pages.RemoveAt(0);
+                    e.HasMorePages = pages.Count > 0;
+                };
+
+                printDoc.Print();
+            }
+            catch (System.Drawing.Printing.InvalidPrinterException ex)
+            {
+                SaveAsPdfWithDialog(pages);
+                return;
+            }
+        }
+
+        private void SaveAsPdf(IList<Stream> pages)
+        {
+            PrintDocument pdfDoc = new PrintDocument();
+            pdfDoc.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+            pdfDoc.PrinterSettings.PrintToFile = true;
+            pdfDoc.PrinterSettings.PrintFileName = "output.pdf";
+
+            pdfDoc.PrintPage += (sender, e) =>
             {
                 Metafile pageImage = new Metafile(pages[0]);
-
                 e.Graphics.DrawImage(pageImage, e.PageBounds);
                 pages.RemoveAt(0);
                 e.HasMorePages = pages.Count > 0;
             };
 
-            printDoc.Print();
+            try
+            {
+                pdfDoc.Print();
+                MessageBox.Show("PDF salvo como 'output.pdf'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao salvar PDF: " + ex.Message);
+            }
         }
+
+
+        private void SaveAsPdfWithDialog(IList<Stream> pages)
+        {
+            PrintDocument pdfDoc = new PrintDocument();
+            pdfDoc.PrinterSettings.PrinterName = "Microsoft Print to PDF";
+
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = pdfDoc;
+            printDialog.UseEXDialog = true;
+
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                pdfDoc.PrintPage += (sender, e) =>
+                {
+                    using (Metafile pageImage = new Metafile(pages[0]))
+                    {
+                        e.Graphics.DrawImage(pageImage, e.PageBounds);
+                    }
+                    pages[0].Dispose();
+                    pages.RemoveAt(0);
+                    e.HasMorePages = pages.Count > 0;
+                };
+
+                pdfDoc.Print();
+            }
+        }
+
     }
 }
