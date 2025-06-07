@@ -129,6 +129,10 @@ namespace RitcherScaleInvoicePrinter
                     ?.ThenByDescending(x => x.EntryTime)  // Depois pela hora do dia
                     ?.ToList();
 
+                btnImprimir.Enabled = false;
+                btnVer.Enabled = false;
+                selectedItem = null;
+
                 if (radioHoje.Checked) {
                     todayFilter();
                 }
@@ -243,12 +247,18 @@ namespace RitcherScaleInvoicePrinter
                     if (e.RowIndex >= 0)
                     {
                         selectedItem = (Measure)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-                        
+
                         if (selectedItem != null)
                         {
                             btnImprimir.Enabled = true;
+                            btnVer.Enabled = true;
                         }
-                    } else selectedItem = null;
+                    }
+                    else {
+                        btnImprimir.Enabled = false;
+                        btnVer.Enabled = false;
+                        selectedItem = null; 
+                    }
                 }
             }
             catch (Exception ex)
@@ -379,8 +389,36 @@ namespace RitcherScaleInvoicePrinter
             {
                 if (selectedItem != null)
                 {
-                    //ReportService reportService = new ReportService();
-                    //reportService.PrintInvoice(selectedItem);
+                    MessageBox.Show("Pedido enviado para a impressora, aguarde!");
+                    ReportService reportService = new ReportService();
+                    reportService.PrintInvoice(selectedItem);
+                }
+                else MessageBox.Show("Selecione algum item na tabela para poder imprimir", "Impressão", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Houve um erro consulte o suporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadAllData();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Houve um erro consulte o suporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (selectedItem != null)
+                {
                     ReportPreview preview = new ReportPreview(selectedItem);
                     preview.ShowDialog();
                 }
@@ -388,7 +426,7 @@ namespace RitcherScaleInvoicePrinter
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show("Houve um erro consulte o suporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
