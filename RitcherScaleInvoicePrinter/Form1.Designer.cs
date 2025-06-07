@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -44,8 +45,8 @@
             this.radioHoje = new System.Windows.Forms.RadioButton();
             this.radioMes = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.btnVer = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panelOutros.SuspendLayout();
@@ -59,7 +60,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(0, 141);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(1552, 488);
@@ -102,7 +103,7 @@
             this.panel4.Controls.Add(this.radioMes);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panel4.Margin = new System.Windows.Forms.Padding(6);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1558, 128);
             this.panel4.TabIndex = 37;
@@ -128,7 +129,7 @@
             this.panelOutros.Controls.Add(this.dateAte);
             this.panelOutros.Controls.Add(this.dateDe);
             this.panelOutros.Location = new System.Drawing.Point(786, 78);
-            this.panelOutros.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelOutros.Margin = new System.Windows.Forms.Padding(6);
             this.panelOutros.Name = "panelOutros";
             this.panelOutros.Size = new System.Drawing.Size(528, 45);
             this.panelOutros.TabIndex = 20;
@@ -162,7 +163,7 @@
             // 
             this.dateAte.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateAte.Location = new System.Drawing.Point(320, 5);
-            this.dateAte.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dateAte.Margin = new System.Windows.Forms.Padding(6);
             this.dateAte.Name = "dateAte";
             this.dateAte.Size = new System.Drawing.Size(198, 31);
             this.dateAte.TabIndex = 18;
@@ -172,7 +173,7 @@
             // 
             this.dateDe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateDe.Location = new System.Drawing.Point(58, 5);
-            this.dateDe.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dateDe.Margin = new System.Windows.Forms.Padding(6);
             this.dateDe.Name = "dateDe";
             this.dateDe.Size = new System.Drawing.Size(198, 31);
             this.dateDe.TabIndex = 19;
@@ -184,7 +185,7 @@
             this.radioOutros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioOutros.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioOutros.Location = new System.Drawing.Point(496, 81);
-            this.radioOutros.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radioOutros.Margin = new System.Windows.Forms.Padding(6);
             this.radioOutros.Name = "radioOutros";
             this.radioOutros.Size = new System.Drawing.Size(288, 33);
             this.radioOutros.TabIndex = 18;
@@ -211,7 +212,7 @@
             this.radioTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioTodos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioTodos.Location = new System.Drawing.Point(48, 81);
-            this.radioTodos.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radioTodos.Margin = new System.Windows.Forms.Padding(6);
             this.radioTodos.Name = "radioTodos";
             this.radioTodos.Size = new System.Drawing.Size(147, 33);
             this.radioTodos.TabIndex = 18;
@@ -226,7 +227,7 @@
             this.radioHoje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioHoje.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioHoje.Location = new System.Drawing.Point(200, 81);
-            this.radioHoje.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radioHoje.Margin = new System.Windows.Forms.Padding(6);
             this.radioHoje.Name = "radioHoje";
             this.radioHoje.Size = new System.Drawing.Size(128, 33);
             this.radioHoje.TabIndex = 18;
@@ -241,7 +242,7 @@
             this.radioMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioMes.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.radioMes.Location = new System.Drawing.Point(333, 81);
-            this.radioMes.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.radioMes.Margin = new System.Windows.Forms.Padding(6);
             this.radioMes.Name = "radioMes";
             this.radioMes.Size = new System.Drawing.Size(159, 33);
             this.radioMes.TabIndex = 18;
@@ -264,18 +265,6 @@
             this.panel1.Size = new System.Drawing.Size(1558, 705);
             this.panel1.TabIndex = 38;
             // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizar.Location = new System.Drawing.Point(498, 638);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(255, 47);
-            this.btnActualizar.TabIndex = 38;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
-            // 
             // btnVer
             // 
             this.btnVer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -289,13 +278,26 @@
             this.btnVer.UseVisualStyleBackColor = true;
             this.btnVer.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizar.Location = new System.Drawing.Point(498, 638);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(255, 47);
+            this.btnActualizar.TabIndex = 38;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1558, 705);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WBridge Monitor";
