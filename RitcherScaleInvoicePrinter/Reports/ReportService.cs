@@ -13,10 +13,12 @@ namespace RitcherScaleInvoicePrinter.Reports
 {
     public class ReportService
     {
-        public void PrintInvoice()
+        public void PrintInvoice(Measure measure)
         {
-            List<Measure> mesures = new List<Measure>();
-            //mesures.Add(new Measure { Driver = "Andre", Mass="20.0"});
+            List<Measure> mesures = new List<Measure>
+            {
+                measure
+            };
 
             LocalReport invoice = new LocalReport();
             invoice.ReportPath = "Invoice.rdlc";

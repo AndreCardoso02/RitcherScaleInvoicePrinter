@@ -221,5 +221,23 @@ namespace RitcherScaleInvoicePrinter
         {
             // Inicialização adicional se necessário
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    //string Id = dataGridView1.Rows[dataGridView1.SelectedRows[0].Index].Cells[0].Value.ToString();
+                    var data = travelRecords?.OrderByDescending(x => x.EntryDate)?.ThenByDescending(x => x.EntryTime)?.ToList()[dataGridView1.SelectedRows[0].Index];
+
+                    MessageBox.Show("Selecionado");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nao foi possivel selecionar, tente novamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
