@@ -116,6 +116,10 @@ namespace RitcherScaleInvoicePrinter
                     LoadDataFromFile(file);
                 }
 
+                // Configurações recomendadas
+                dataGridView1.ScrollBars = ScrollBars.Both;
+                dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+
                 // Preenche a DataGridView com a lista
                 dataGridView1.DataSource = travelRecords
                     ?.OrderByDescending(x => x.EntryDate.Date)  // Ordena pela data (sem hora)

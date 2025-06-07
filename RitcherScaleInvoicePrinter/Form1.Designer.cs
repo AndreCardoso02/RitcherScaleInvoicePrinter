@@ -42,9 +42,11 @@
             this.radioTodos = new System.Windows.Forms.RadioButton();
             this.radioHoje = new System.Windows.Forms.RadioButton();
             this.radioMes = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panelOutros.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -53,49 +55,51 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 137);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 140);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(1668, 837);
+            this.dataGridView1.Size = new System.Drawing.Size(1552, 472);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.Location = new System.Drawing.Point(1396, 988);
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.Location = new System.Drawing.Point(1290, 637);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(255, 62);
+            this.btnImprimir.Size = new System.Drawing.Size(255, 47);
             this.btnImprimir.TabIndex = 1;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.Location = new System.Drawing.Point(1133, 988);
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.Location = new System.Drawing.Point(1027, 637);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(255, 62);
+            this.btnCancelar.Size = new System.Drawing.Size(255, 47);
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
-            this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.Controls.Add(this.panelOutros);
             this.panel4.Controls.Add(this.radioOutros);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.radioTodos);
             this.panel4.Controls.Add(this.radioHoje);
             this.panel4.Controls.Add(this.radioMes);
-            this.panel4.Location = new System.Drawing.Point(15, 15);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1638, 110);
+            this.panel4.Size = new System.Drawing.Size(1558, 128);
             this.panel4.TabIndex = 37;
             // 
             // panelOutros
@@ -105,7 +109,7 @@
             this.panelOutros.Controls.Add(this.label5);
             this.panelOutros.Controls.Add(this.dateAte);
             this.panelOutros.Controls.Add(this.dateDe);
-            this.panelOutros.Location = new System.Drawing.Point(420, 52);
+            this.panelOutros.Location = new System.Drawing.Point(380, 78);
             this.panelOutros.Margin = new System.Windows.Forms.Padding(6);
             this.panelOutros.Name = "panelOutros";
             this.panelOutros.Size = new System.Drawing.Size(812, 46);
@@ -160,7 +164,7 @@
             this.radioOutros.AutoSize = true;
             this.radioOutros.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioOutros.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.radioOutros.Location = new System.Drawing.Point(984, 6);
+            this.radioOutros.Location = new System.Drawing.Point(944, 32);
             this.radioOutros.Margin = new System.Windows.Forms.Padding(6);
             this.radioOutros.Name = "radioOutros";
             this.radioOutros.Size = new System.Drawing.Size(328, 34);
@@ -175,7 +179,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(306, 6);
+            this.label6.Location = new System.Drawing.Point(266, 32);
             this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 36);
@@ -188,7 +192,7 @@
             this.radioTodos.AutoSize = true;
             this.radioTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioTodos.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.radioTodos.Location = new System.Drawing.Point(416, 6);
+            this.radioTodos.Location = new System.Drawing.Point(376, 32);
             this.radioTodos.Margin = new System.Windows.Forms.Padding(6);
             this.radioTodos.Name = "radioTodos";
             this.radioTodos.Size = new System.Drawing.Size(162, 34);
@@ -203,7 +207,7 @@
             this.radioHoje.AutoSize = true;
             this.radioHoje.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioHoje.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.radioHoje.Location = new System.Drawing.Point(614, 6);
+            this.radioHoje.Location = new System.Drawing.Point(574, 32);
             this.radioHoje.Margin = new System.Windows.Forms.Padding(6);
             this.radioHoje.Name = "radioHoje";
             this.radioHoje.Size = new System.Drawing.Size(139, 34);
@@ -218,7 +222,7 @@
             this.radioMes.AutoSize = true;
             this.radioMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioMes.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.radioMes.Location = new System.Drawing.Point(786, 6);
+            this.radioMes.Location = new System.Drawing.Point(746, 32);
             this.radioMes.Margin = new System.Windows.Forms.Padding(6);
             this.radioMes.Name = "radioMes";
             this.radioMes.Size = new System.Drawing.Size(176, 34);
@@ -227,16 +231,25 @@
             this.radioMes.Text = "Deste Mês";
             this.radioMes.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnImprimir);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1558, 705);
+            this.panel1.TabIndex = 38;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1668, 1062);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnImprimir);
-            this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.ClientSize = new System.Drawing.Size(1558, 705);
+            this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WBridge Monitor";
@@ -246,6 +259,7 @@
             this.panel4.PerformLayout();
             this.panelOutros.ResumeLayout(false);
             this.panelOutros.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -269,6 +283,7 @@
         private System.Windows.Forms.RadioButton radioTodos;
         private System.Windows.Forms.RadioButton radioHoje;
         private System.Windows.Forms.RadioButton radioMes;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
