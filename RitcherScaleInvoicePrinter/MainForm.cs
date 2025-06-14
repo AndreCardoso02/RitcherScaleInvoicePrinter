@@ -123,7 +123,7 @@ namespace RitcherScaleInvoicePrinter
                 EntryTime = DateTime.Now.TimeOfDay,
 
                 // Outros dados conforme CSV
-                SlipNumber = "8091",
+                SlipNumber = textBox1.Text,
 
                 VehicleRegistration = txtMatr.Text,
                 VehicleNumber = txtMatr.Text,
@@ -140,7 +140,7 @@ namespace RitcherScaleInvoicePrinter
                 DriverNumber = "1234",
 
                 CustomerName = txtCompany.Text,
-                AccountNumber = txtCompany.Text,
+                AccountNumber = textBox1.Text,
                 OrderNumber = txtNOrder.Text, // CSV está vazio aqui
 
                 ProductName = (rdAsfalto.Checked ? "ASFALTO" : "FUELL"), // Do CSV: "0" (confuso, mas é o valor dado)
@@ -174,6 +174,7 @@ namespace RitcherScaleInvoicePrinter
         {
             txtNOrder.Text = measure.OrderNumber;
             txtMatr.Text = measure.VehicleNumber;
+            textBox1.Text = measure.AccountNumber;
             txtTruckModel.Text = measure.VehicleBrand;
             txtDriver.Text = measure.DriverName;
             txtCompany.Text = measure.CustomerName;
@@ -187,6 +188,7 @@ namespace RitcherScaleInvoicePrinter
         private void Limpar()
         {
             txtNOrder.Clear();
+            textBox1.Clear();
             txtMatr.Clear();
             txtTruckModel.Clear();
             txtDriver.Clear();
