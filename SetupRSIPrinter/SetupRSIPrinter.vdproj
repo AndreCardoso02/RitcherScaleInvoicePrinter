@@ -578,7 +578,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -653,7 +653,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_3A2750AAFF7348D3B80A162B07DCBBEE"
             {
             "Name" = "8:#1919"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:ProgramMenuFolder"
@@ -665,7 +665,7 @@
             {
             "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:TARGETDIR"
@@ -676,7 +676,7 @@
             "{1525181F-901A-416C-8A58-119130FE478E}:_ED338A628F184ADD9F9F0D25A11675DA"
             {
             "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
+            "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Property" = "8:DesktopFolder"
@@ -701,7 +701,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RSIPrinter"
         "ProductCode" = "8:{988C06A2-B402-4DF1-8332-2E80E5F6BBE2}"
-        "PackageCode" = "8:{9B18AE3D-6B6F-48E2-BE78-DFF4F01865FF}"
+        "PackageCode" = "8:{27634D73-2922-48E9-969D-1286F12DF1DF}"
         "UpgradeCode" = "8:{2C73D182-5949-4DE5-8CFB-C430615546AC}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -821,7 +821,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0A2DE826938740F0820B3415EB85BAD6"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_575D71296B444AFF93B0E54351B31891"
             {
             "Name" = "8:Wbridge Printer"
             "Arguments" = "8:"
@@ -829,13 +829,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_DB0B11CDFA7847468297C4EC3896AF73"
-            "Folder" = "8:_DB0B11CDFA7847468297C4EC3896AF73"
+            "Target" = "8:_494A1EFF22C6417780FE652ECE35F261"
+            "Folder" = "8:_3A2750AAFF7348D3B80A162B07DCBBEE"
             "WorkingFolder" = "8:_DB0B11CDFA7847468297C4EC3896AF73"
             "Icon" = "8:_1D662278A0CE40F99C2C969F0C8AB26D"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4E0D992EF4354F5BB8FA4E1CFF09EEF6"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D1E2CD39347840A1BC7F11D6A3C6EC8E"
             {
             "Name" = "8:Wbridge Printer"
             "Arguments" = "8:"
@@ -843,13 +843,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3A2750AAFF7348D3B80A162B07DCBBEE"
-            "Folder" = "8:_3A2750AAFF7348D3B80A162B07DCBBEE"
-            "WorkingFolder" = "8:_3A2750AAFF7348D3B80A162B07DCBBEE"
+            "Target" = "8:_494A1EFF22C6417780FE652ECE35F261"
+            "Folder" = "8:_ED338A628F184ADD9F9F0D25A11675DA"
+            "WorkingFolder" = "8:_DB0B11CDFA7847468297C4EC3896AF73"
             "Icon" = "8:_1D662278A0CE40F99C2C969F0C8AB26D"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_666A5EFD52EC4E0B9B3409A45F8DD481"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D53948A86C2C434883B59B8C9347D2AA"
             {
             "Name" = "8:Wbridge Printer"
             "Arguments" = "8:"
@@ -857,9 +857,9 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_ED338A628F184ADD9F9F0D25A11675DA"
-            "Folder" = "8:_ED338A628F184ADD9F9F0D25A11675DA"
-            "WorkingFolder" = "8:_ED338A628F184ADD9F9F0D25A11675DA"
+            "Target" = "8:_494A1EFF22C6417780FE652ECE35F261"
+            "Folder" = "8:_DB0B11CDFA7847468297C4EC3896AF73"
+            "WorkingFolder" = "8:_DB0B11CDFA7847468297C4EC3896AF73"
             "Icon" = "8:_1D662278A0CE40F99C2C969F0C8AB26D"
             "Feature" = "8:"
             }

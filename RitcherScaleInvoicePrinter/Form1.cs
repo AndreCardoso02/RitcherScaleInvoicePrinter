@@ -188,9 +188,9 @@ namespace RitcherScaleInvoicePrinter
                             LoadType = v[16],
                             Notes = v[17],
 
-                            TareWeight = int.TryParse(v[18], out var tare) ? tare : 0,
-                            GrossWeight = int.TryParse(v[19], out var gross) ? gross : 0,
-                            NetWeight = int.TryParse(v[20], out var net) ? net : 0,
+                            TareWeight = int.TryParse(v[19], out var gross) ? gross : 0,
+                            GrossWeight = int.TryParse(v[20], out var net) ? net : 0,
+                            NetWeight = int.TryParse(v[18], out var tare) ? tare : 0,
                             VerifiedWeight = int.TryParse(v[21], out var verified) ? verified : 0,
 
                             AdditionalWeight1 = v[22],
@@ -204,7 +204,7 @@ namespace RitcherScaleInvoicePrinter
 
                             // Product Details
                             ProductName = v[10],
-                            ProductNumber = v[9],
+                            ProductNumber = "R502",//v[9],
                             PricePerTon = null,
                             DeliveryPricePerKm = null,
 

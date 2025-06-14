@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -97,12 +98,15 @@ namespace RitcherScaleInvoicePrinter
             }
             else
             {
-                measure.ExitDate = DateTime.Now.Date;
-                measure.ExitTime = DateTime.Now.TimeOfDay;
-                EscreverNoArquivo(measure);
+                selectedTruck.ExitDate = DateTime.Now.Date;
+                selectedTruck.ExitTime = DateTime.Now.TimeOfDay;
+                selectedTruck.GrossWeight = !string.IsNullOrEmpty(txtWeight.Text) ? Int32.Parse(txtWeight.Text) : 0;
+                selectedTruck.VerifiedWeight = selectedTruck.GrossWeight - selectedTruck.TareWeight;
+                selectedTruck.LoadStatus = (string.IsNullOrEmpty(txtWeight.Text) ? "EMPTY" : "FULL");
+                EscreverNoArquivo(selectedTruck);
+                Print(selectedTruck);
                 measures.Remove(selectedTruck);
                 selectedTruck = null;
-                Print(measure);
             }
 
             Limpar();
@@ -127,7 +131,7 @@ namespace RitcherScaleInvoicePrinter
                 OperationType = "CAT", // Supondo que CAT representa o tipo de operação
                 DeliveryDistance = 0,  // Do CSV: "0"
 
-                TransporterName = txtTransporter.Text, // CAT de novo
+                TransporterName = txtCompany.Text, // CAT de novo
                 TransporterNumber = "1234",
 
                 TariffKmTon = 1234, // Como está no CSV, supondo decimal (exemplo)
@@ -155,7 +159,7 @@ namespace RitcherScaleInvoicePrinter
                 DriverDocument = "",    // Não veio valor
                 CarrierId = "",         // Não veio valor
                 VehicleBrand = txtTruckModel.Text,      // Não veio valor
-                LoadType = "",         // Não veio valor
+                LoadType = (rdAsfalto.Checked ? "ASFALTO" : "FUELL"),         // Não veio valor
                 Notes = "",            // Não veio valor
                 VerifiedWeight = !string.IsNullOrEmpty(lblLiquid.Text) ? Int32.Parse(lblLiquid.Text) : 0,
                 AdditionalWeight1 = "0",
@@ -172,7 +176,6 @@ namespace RitcherScaleInvoicePrinter
             txtMatr.Text = measure.VehicleNumber;
             txtTruckModel.Text = measure.VehicleBrand;
             txtDriver.Text = measure.DriverName;
-            txtTransporter.Text = measure.TransporterName;
             txtCompany.Text = measure.CustomerName;
             if (measure.ProductName == "ASFALTO") rdAsfalto.Checked = true;
             else rdFuel.Checked = true;
@@ -187,12 +190,12 @@ namespace RitcherScaleInvoicePrinter
             txtMatr.Clear();
             txtTruckModel.Clear();
             txtDriver.Clear();
-            txtTransporter.Clear();
             txtCompany.Clear();
             rdFuel.Checked = true;
             txtTara.Clear();
             txtWeight.Clear();
             lblLiquid.Text = "0";
+            txtWeight.Enabled = false;
         }
         #endregion
 
@@ -203,7 +206,7 @@ namespace RitcherScaleInvoicePrinter
 
         private void ActualizarLista()
         {
-            listTrucks.Items.Clear();
+            dgView.Rows.Clear(); // Limpa as linhas existentes
             if (measures.Count > 0)
             {
                 foreach (var measure in measures)
@@ -213,33 +216,13 @@ namespace RitcherScaleInvoicePrinter
             }
         }
 
-        private void listTrucks_ItemActivate(object sender, EventArgs e)
-        {
-            if (listTrucks.SelectedItems.Count > 0)
-            {
-                var selectedItem = listTrucks.SelectedItems[0];
-                var measure = (Measure)selectedItem.Tag; // pega o objeto Measure
-
-                // Remove da lista
-                measures.Remove(measure);
-
-                // Remove da ListView
-                listTrucks.Items.Remove(selectedItem);
-
-                // Preenche os TextBox, RadioButton, etc.
-                SetData(measure);
-
-                selectedTruck = measure;
-            }
-        }
-
         private void AdicionarNovoItem(Measure measure)
         {
-            var item = new ListViewItem(measure.VehicleNumber);
-            item.SubItems.Add(measure.DriverName);
-            item.SubItems.Add(measure.CustomerName);
-            item.Tag = measure;
-            listTrucks.Items.Add(item);
+            // Adiciona uma nova linha com os valores de Matricula e Motorista
+            int rowIndex = dgView.Rows.Add(measure.VehicleNumber, measure.DriverName);
+
+            // Armazena o objeto 'measure' na propriedade Tag da linha, se quiser acessá-lo depois
+            dgView.Rows[rowIndex].Tag = measure;
         }
 
         private void EscreverNoArquivo(Measure measure)
@@ -300,5 +283,47 @@ namespace RitcherScaleInvoicePrinter
                 MessageBox.Show("Houve um erro consulte o suporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void btnReimprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form1 preview = new Form1();
+
+                preview.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Houve um erro consulte o suporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Verifica se clicou numa linha válida
+                if (e.RowIndex >= 0 && e.RowIndex < dgView.Rows.Count)
+                {
+                    // Remove da lista de dados
+                    selectedTruck = measures[e.RowIndex];
+                    selectedTruck.ExitDate = DateTime.Now;
+                    selectedTruck.ExitTime = DateTime.Now.TimeOfDay;
+                    measures.RemoveAt(e.RowIndex);
+
+                    // Remove do DataGridView
+                    dgView.Rows.RemoveAt(e.RowIndex);
+
+                    // Limpa dados relacionados
+                    txtWeight.Enabled = true;
+                    SetData(selectedTruck);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Não foi possível remover, tente novamente.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }
